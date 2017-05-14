@@ -41,5 +41,4 @@
 
 
 - name: Tell the user to update their path (if on OSX)
-  debug: msg='Be sure that your path includes this to catch the correct version of tar!!!'
-- debug: msg='PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"'
+  debug: msg='Be sure that your path includes this to catch the correct version of tar!!! PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"'
