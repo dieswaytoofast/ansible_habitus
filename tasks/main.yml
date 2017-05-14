@@ -1,0 +1,38 @@
+---
+
+- name: Identify correct version to download
+  set_fact:
+    ansible_habitus_binary_name: "habitus_linux_amd64"
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Identify correct version to download
+  set_fact:
+    ansible_habitus_binary_name: "habitus_darwin_amd64"
+  when: ansible_distribution == 'MacOSX'
+
+- name: Download and Install habitus
+  get_url:
+    url: "https://github.com/cloud66/habitus/releases/download/0.4.10/{{ ansible_habitus_binary_name }}"
+    dest: "/usr/local/bin/habitus"
+    mode: 0755
+
+
+# Install gnu tar if on OSX
+
+- name: Upgrade Brew
+  homebrew:
+    update_homebrew: yes
+
+- name: Install packages
+  homebrew:
+    state: latest
+    name:
+      - gnu-tar
+
+- name: Upgrade Brew again (to catch changes)
+  homebrew:
+    upgrade_all: yes
+
+
+- name: Tell the user to update their path (if on OSX)
+  debug: msg='Be sure that your path includes this to catch the correct version of tar!!! PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"'

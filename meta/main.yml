@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  author: Mahesh Paolini-Subramanya (@dieswaytoofast)
+  description: Ansible role that installs Habitus on OSX and Ubuntu Xenial.
+  license: BSD
+  min_ansible_version: 2.0
+  platforms:
+  - name: Ubuntu
+    versions:
+    - xenial
+  - name: OSX
+    versions:
+      - sierra
+  galaxy_tags:
+  - cloud
+  - docker
+  - habitus
+  - packaging
+  - system
+dependencies: []
