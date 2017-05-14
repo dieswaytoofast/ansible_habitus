@@ -26,6 +26,7 @@
   homebrew:
     update_homebrew: yes
   become: false
+  when: ansible_distribution == 'MacOSX'
 
 - name: Install packages
   homebrew:
@@ -33,12 +34,15 @@
     name:
       - gnu-tar
   become: false
+  when: ansible_distribution == 'MacOSX'
 
 - name: Upgrade Brew again (to catch changes)
   homebrew:
     upgrade_all: yes
   become: false
+  when: ansible_distribution == 'MacOSX'
 
 
 - name: Tell the user to update their path (if on OSX)
   debug: msg='Be sure that your path includes this to catch the correct version of tar!!! PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"'
+  when: ansible_distribution == 'MacOSX'
