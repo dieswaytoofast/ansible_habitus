@@ -15,7 +15,7 @@
     url: "https://github.com/cloud66/habitus/releases/download/0.4.10/{{ ansible_habitus_binary_name }}"
     dest: "/usr/local/bin/habitus"
     force: true
-    user: "{{ base_username }}"
+    owner: "{{ base_username }}"
     group: "{{ base_groupname }}"
     mode: 0755
 
